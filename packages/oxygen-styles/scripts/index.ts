@@ -2,7 +2,13 @@ import { colorNames, stops, type Stop } from "../settings/global";
 import type { ContrastColorMapRecord } from "../types";
 
 type ColorPropType = "color" | "background" | "background-alpha";
-type DictionaryType<T> = { [key: string]: T };
+type CssProperties = {
+  [cssProperty: string]: string;
+};
+
+type DictionaryType = {
+  [key: string]: CssProperties;
+};
 
 const COLOR_PROP_PREFIX = "--color-";
 const ALPHA_VAL_POSTFIX = " / <alpha-value>";
@@ -35,9 +41,9 @@ export const createGenerateCssValues = (
     createGenerateCssPropKeyValuePair(generateCssPropValue);
 
   // Func: generateCssValues
-  return function <T>(
+  return function (
     // Object to collect all the return values. If none is passed in, create one as a default.
-    dictionary: DictionaryType<T> = {},
+    dictionary: DictionaryType = {},
     // Array of values we are collecting.
     collection: string[] = [],
     // A color map used to determine the contrast color for accessible text on a given background color. There should be function to create contrastColorsMap in helpers.
