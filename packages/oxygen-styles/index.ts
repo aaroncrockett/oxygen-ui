@@ -1,0 +1,1 @@
+export { getTwColors } from "./scripts";
