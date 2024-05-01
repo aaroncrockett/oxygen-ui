@@ -205,7 +205,3 @@ export const getTwColors = () => {
 
   return results;
 };
-
-export function example() {
-  return "example";
-}
