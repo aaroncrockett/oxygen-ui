@@ -28,6 +28,7 @@
     "hoverable",
     "listbox",
     "nowrap",
+    "nocheck",
     "nuxtjs",
     "PNPM",
     "postcss",
