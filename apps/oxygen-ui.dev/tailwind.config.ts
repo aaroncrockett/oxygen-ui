@@ -19,12 +19,6 @@ const config: Config = {
       colors: {
         ...getTwColors(),
       },
-      height: {
-        "8": "9rem",
-      },
-      "btn-h": {
-        sm: "2rem",
-      },
     },
   },
 
