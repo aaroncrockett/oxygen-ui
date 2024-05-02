@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
-import { getTwColors } from "oxygen-styles/";
+import { getTwColors, pluginCb } from "oxygen-styles/";
 
 const config: Config = {
   content: [
@@ -18,8 +19,15 @@ const config: Config = {
       colors: {
         ...getTwColors(),
       },
+      height: {
+        "8": "9rem",
+      },
+      "btn-h": {
+        sm: "2rem",
+      },
     },
   },
-  plugins: [],
+
+  plugins: [plugin(pluginCb)],
 };
 export default config;
