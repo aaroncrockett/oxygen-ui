@@ -1,34 +1,37 @@
 export { getTwColors } from "./scripts";
-import { generateBtnTokens } from "./components/btn.js";
-import { createBtnUtils } from "./utilities/btn.js";
+import { generateBtnTokens } from "./styles/components/btn.js";
+import { createBtnUtils } from "./styles/utilities/btn.js";
 
 // const components = { ...btnTokens };
 
-const customUtils = ["btn-h"];
-
 // @ts-ignore
-function collectCustomUtilOverrides(theme) {
-  const collectedUtils: Record<string, string> = {};
+export const collectCustomUtilOverrides = (theme) => {
+  const CUSTOM_UTIL_TYPES = ["btn-h", "btn-p"] as const;
 
-  customUtils.forEach((value) => {
-    if (theme(value)) {
-      const utils = theme(value);
+  const newUtilColl: Record<string, string> = {};
+
+  CUSTOM_UTIL_TYPES.forEach((utilType) => {
+    if (theme(utilType)) {
+      const utils = theme(utilType);
+
       Object.keys(utils).forEach((key) => {
-        const newKey = `${value}-${key}`;
-        collectedUtils[newKey] = utils[key];
+        const newKey = `${utilType}-${key}`;
+        newUtilColl[newKey] = utils[key];
       });
     }
   });
-}
+
+  return newUtilColl;
+};
 
 // @ts-ignore
 const pluginCb = ({ addComponents, addUtilities, theme }) => {
-  const btnUtils = createBtnUtils(theme);
+  const userUtils = collectCustomUtilOverrides(theme);
+  const btnUtils = createBtnUtils(theme, userUtils);
   const btnComponents = generateBtnTokens(btnUtils);
 
-  collectCustomUtilOverrides(theme);
-
   const components = { ...btnComponents };
+  const utils = { ...btnUtils };
 
   addUtilities(utils, theme);
   addComponents(components);
