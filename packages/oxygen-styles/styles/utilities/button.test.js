@@ -1,5 +1,5 @@
 import { test, expect } from "bun:test";
-import { createBtnUtils } from "./btn";
+import { createBtnUtils } from "./button";
 
 test("createBtnUtils correctly generates button utilities with default values", () => {
   // Define a simple theme function returning the value as is

@@ -1,6 +1,6 @@
 export { getTwColors } from "./scripts";
-import { generateBtnTokens } from "./styles/components/btn.js";
-import { createBtnUtils } from "./styles/utilities/btn.js";
+import { generateBtnTokens } from "./styles/components/button.js";
+import { createBtnUtils } from "./styles/utilities/button.js";
 
 // const components = { ...btnTokens };
 
